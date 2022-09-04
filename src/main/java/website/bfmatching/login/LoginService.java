@@ -16,7 +16,7 @@ public class LoginService {
     public Member login(String loginId, String password){
 
         try{
-            Member findMember = memberRepository.findByloginId(loginId);
+            Member findMember = memberRepository.findByLoginId(loginId);
             if(findMember.getPassword().equals(password)){
                 return findMember;
             }else{

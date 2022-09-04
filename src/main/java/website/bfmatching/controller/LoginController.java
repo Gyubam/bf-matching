@@ -26,13 +26,13 @@ public class LoginController {
 
     //로그인 폼
     @GetMapping("/login")
-    public String loginForm() {
+    public String loginForm(@ModelAttribute("loginForm") LoginForm form) {
 
         return "/layout/login/loginForm";
     }
 
     @PostMapping("/login")
-    public String login(@Valid @ModelAttribute LoginForm form,
+    public String login(@Valid @ModelAttribute("loginForm") LoginForm form,
                         BindingResult bindingResult,
                         @RequestParam(defaultValue = "/") String redirectURL,
                         HttpServletRequest request) {
@@ -44,6 +44,7 @@ public class LoginController {
         Member loginMember = loginService.login(form.getLoginId(), form.getPassword());
 
         log.info("login? {}", loginMember);
+
         if (loginMember == null) {
             bindingResult.reject("loginFail", "아이디 또는 비밀번호가 맞지 않습니다.");
             return "/layout/login/loginForm";

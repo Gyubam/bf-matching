@@ -35,8 +35,7 @@ public class MemberController {
             return "/layout/login/addMemberForm";
         }
 
-        System.out.println("memberDto = " + memberDto.getPassword());
-        System.out.println("memberDto.getLoginId() = " + memberDto.getLoginId());
+
 
         memberService.registerDB(memberDto);
 
