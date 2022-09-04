@@ -16,7 +16,7 @@ public class Member {
     @Column(name = "member_id")
     private Long id;
 
-    private String memberId;
+    private String loginId;
     private String password;
     private String memberName;
 
@@ -31,4 +31,9 @@ public class Member {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "team_id")
     private Team team;
+
+    public Member(String loginId, String password) {
+        this.loginId = loginId;
+        this.password = password;
+    }
 }

@@ -18,7 +18,7 @@ public class Team {
 
     private String teamName;
 
-    @OneToMany(mappedBy = "member_id")
+    @OneToMany(mappedBy = "team")
     @JsonIgnore
     private List<Member> memberList = new ArrayList<>();
 }
