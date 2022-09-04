@@ -13,4 +13,10 @@ public class HomeController {
 
         return "/index";
     }
+
+    @GetMapping("/dd")
+    public String info() {
+
+        return "/layout/info";
+    }
 }
