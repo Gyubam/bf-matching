@@ -3,6 +3,7 @@ package website.bfmatching.controller;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -35,7 +36,8 @@ public class LoginController {
     public String login(@Valid @ModelAttribute("loginForm") LoginForm form,
                         BindingResult bindingResult,
                         @RequestParam(defaultValue = "/") String redirectURL,
-                        HttpServletRequest request) {
+                        HttpServletRequest request,
+                        Model model) {
 
         if (bindingResult.hasErrors()) {
             return "/layout/login/loginForm";
@@ -53,8 +55,12 @@ public class LoginController {
         HttpSession session = request.getSession();
 
         session.setAttribute(SessionConst.LOGIN_MEMBER, loginMember);
+        session.setAttribute("loginMemberId", loginMember.getLoginId());
 
-        return "redirect:" + redirectURL;
+        model.addAttribute("member", loginMember);
+
+//        return "redirect:" + redirectURL;
+        return "/index";
     }
 
     @GetMapping("/logout")

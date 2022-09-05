@@ -23,7 +23,7 @@
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-4">
                         <li class="nav-item"><a class="nav-link active" aria-current="page" href="#!">Home</a></li>
                         <li class="nav-item"><a class="nav-link" href="#!">About</a></li>
-                        <li th:if="${session.loginMember != null}" class="nav-item"><a class="nav-link" href="#!">Add Post</a></li>
+                        <li th:if="${session.loginMember != null}" class="nav-item"><a class="nav-link" href="/post/add">Add Post</a></li>
                         <li th:if="${session.loginMember == null}" class="nav-item"><a class="nav-link" href="/login">LogIn</a></li>
                         <li th:if="${session.loginMember != null}" class="nav-item"><a class="nav-link" href="/logout">LogOut</a></li>
 <!--                        <li class="nav-item dropdown">-->
@@ -37,6 +37,7 @@
 <!--                        </li>-->
                     </ul>
                     <form class="d-flex">
+                        <label style="margin:20px" th:if="${session.loginMember != null}" th:text="|${session.loginMemberId} 님 안녕하세요.|"></label>
                         <button class="btn btn-outline-dark" type="submit">
                             <i class="bi bi-star-fill"></i>
                             관심

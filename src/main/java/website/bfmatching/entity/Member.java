@@ -37,6 +37,7 @@ public class Member {
         this.password = password;
     }
 
+
     public Member() {
     }
 }

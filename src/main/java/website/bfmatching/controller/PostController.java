@@ -1,22 +1,18 @@
 package website.bfmatching.controller;
 
+import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 
 @Controller
+@RequiredArgsConstructor
 @Slf4j
-public class HomeController {
+public class PostController {
 
-    @GetMapping("/")
-    public String home() {
+    @GetMapping("/post/add")
+    public String addForm() {
 
-        return "/index";
-    }
-
-    @GetMapping("/dd")
-    public String info() {
-
-        return "/layout/postInfo";
+        return "/layout/addPostForm";
     }
 }
