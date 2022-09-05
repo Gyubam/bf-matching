@@ -53,8 +53,8 @@ public class InitDb {
                     "스프링을 통해 웹 개발을 진행합니다.", "네이버 데이터랩 API 를 통해 검색어의 검색량 조회 및 그래프로 나타냅니다.",
                     "크롤링을 통해 실시간 검색어를 웹사이트의 실시간 검색어 정보를 추출합니다.");
 
-            boardService.save(member1.getLoginId(), addFormDto1, new UploadFile("1","2"));
-            boardService.save(member2.getLoginId(), addFormDto2, new UploadFile("1", "2"));
+            boardService.save(member1.getLoginId(), addFormDto1, new UploadFile("1","509d1deb-fc42-48dd-b24c-c93204f4190d.PNG"));
+            boardService.save(member2.getLoginId(), addFormDto2, new UploadFile("1", "0f08909f-e55d-4214-8711-4ea3b23563b4.PNG"));
 
 
         }

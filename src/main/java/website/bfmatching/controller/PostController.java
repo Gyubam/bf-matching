@@ -3,6 +3,8 @@ package website.bfmatching.controller;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.core.io.Resource;
+import org.springframework.core.io.UrlResource;
 import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
@@ -18,6 +20,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import java.io.File;
 import java.io.IOException;
+import java.net.MalformedURLException;
 
 @Controller
 @RequiredArgsConstructor
@@ -56,5 +59,11 @@ public class PostController {
     public String info(@PathVariable("postId") Long boardId) {
 
         return "/layout/postInfo";
+    }
+
+    @ResponseBody
+    @GetMapping("/images/{filename}")
+    public Resource downloadImage(@PathVariable String filename) throws MalformedURLException {
+        return new UrlResource("file:" + fileStore.getFullPath(filename));
     }
 }
