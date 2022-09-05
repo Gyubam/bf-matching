@@ -6,6 +6,7 @@ import org.springframework.transaction.annotation.Transactional;
 import website.bfmatching.Dto.AddFormDto;
 import website.bfmatching.entity.Board;
 import website.bfmatching.entity.Member;
+import website.bfmatching.file.UploadFile;
 import website.bfmatching.repository.BoardRepository;
 import website.bfmatching.repository.MemberRepository;
 
@@ -21,7 +22,7 @@ public class BoardService {
     private final BoardRepository boardRepository;
 
     @Transactional
-    public Long save(String loginId, AddFormDto addFormDto) {
+    public Long save(String loginId, AddFormDto addFormDto, UploadFile file) {
 
         Member findMember = memberRepository.findByLoginId(loginId);
 
@@ -35,9 +36,12 @@ public class BoardService {
         String r_content2 = addFormDto.getR_content2();
         String r_content3 = addFormDto.getR_content3();
 
+        String uploadFileName = file.getUploadFileName(); // 사용자가 업로드한 파일명
+        String storeFileName = file.getStoreFileName(); // 서버 내부 관리 파일명
+
 
         Board board = new Board(findMember, writerName, projectName, projectIntro, r_title1, r_title2,
-                r_title3,r_content1,r_content2,r_content3);
+                r_title3, r_content1, r_content2, r_content3, uploadFileName, storeFileName);
 
         boardRepository.save(board);
 

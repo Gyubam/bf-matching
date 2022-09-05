@@ -60,7 +60,7 @@ public class LoginController {
         model.addAttribute("member", loginMember);
 
 //        return "redirect:" + redirectURL;
-        return "/index";
+        return "redirect:/";
     }
 
     @GetMapping("/logout")
