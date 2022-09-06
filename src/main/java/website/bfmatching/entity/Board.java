@@ -1,6 +1,7 @@
 package website.bfmatching.entity;
 
 import lombok.Getter;
+import lombok.ToString;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.persistence.*;
@@ -9,6 +10,7 @@ import java.util.List;
 
 @Entity
 @Getter
+@ToString
 public class Board {
 
     @Id
@@ -56,6 +58,7 @@ public class Board {
         this.uploadFileName = uploadFileName;
         this.storeFileName = storeFileName;
     }
+
 
     public Board() {
     }

@@ -45,7 +45,8 @@ public class InitDb {
 
             AddFormDto addFormDto1 = new AddFormDto("유튜브 댓글 분석 서비스", "유튜브 영상의 댓글에 대한 전반적인 분석을 제공하는" +
                     "자동화된 웹사이트 입니다.", "sss1234", "Spring", "React", "Flask, NLP",
-                    "스프링을 통해 백엔드를 구성합니다.", "프론트엔드는 리액트를 통해 개발을 진행합니다.",
+                    "스프링을 통해 백엔드를 구성합니다. MVC 모델로 아키텍쳐를 구성하며 DB의 경우 MYSQL을 사용합니다.",
+                    "프론트엔드는 리액트를 통해 개발을 진행합니다. REST API를 통해 플라스크 서버와 JSON 데이터를 주고 받습니다.",
                     "NLP 모델링을 위해 Flask API서버를 구축하며 자연어처리를 위한 인공지능 모델을 구축합니다.");
 
             AddFormDto addFormDto2 = new AddFormDto("SeeTrend", "실시간 검색어 및 검색 추이에 관한 정보를 제공하는 웹사이트 입니다.",

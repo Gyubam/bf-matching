@@ -22,7 +22,9 @@ public class AddFormDto {
 
     private MultipartFile attachFile;
 
-    public AddFormDto(String projectName, String projectIntro, String writerName, String r_title1, String r_title2, String r_title3, String r_content1, String r_content2, String r_content3) {
+    public AddFormDto(String projectName, String projectIntro, String writerName,
+                      String r_title1, String r_title2, String r_title3,
+                      String r_content1, String r_content2, String r_content3) {
         this.projectName = projectName;
         this.projectIntro = projectIntro;
         this.writerName = writerName;
