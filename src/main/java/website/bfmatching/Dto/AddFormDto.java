@@ -21,10 +21,12 @@ public class AddFormDto {
     private String r_content3;
 
     private MultipartFile attachFile;
+    private String needPosition;
 
     public AddFormDto(String projectName, String projectIntro, String writerName,
                       String r_title1, String r_title2, String r_title3,
-                      String r_content1, String r_content2, String r_content3) {
+                      String r_content1, String r_content2, String r_content3,
+                      String needPosition) {
         this.projectName = projectName;
         this.projectIntro = projectIntro;
         this.writerName = writerName;
@@ -34,6 +36,7 @@ public class AddFormDto {
         this.r_content1 = r_content1;
         this.r_content2 = r_content2;
         this.r_content3 = r_content3;
+        this.needPosition = needPosition;
     }
 
 

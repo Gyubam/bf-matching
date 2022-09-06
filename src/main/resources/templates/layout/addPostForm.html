@@ -13,6 +13,7 @@
     <!-- Core theme CSS (includes Bootstrap)-->
     <link href="../css/styles.css" rel="stylesheet" />
 </head>
+
 <body>
 <!-- Navigation-->
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
@@ -71,28 +72,38 @@
         </div>
 
         <div class="form-group row" style="margin:20px">
-            <label class="col-sm-2">프로젝트 소개</label>
+            <label class="col-sm-5">프로젝트 소개</label>
             <div class="com-sm-3">
                 <input th:field="*{projectIntro}" type="text" class="form-control">
             </div>
         </div>
 
         <div class="form-group row" style="margin:20px">
-            <label class="col-sm-2">작성자 id</label>
+            <label class="col-sm-6">작성자 id</label>
             <div class="com-sm-3">
                 <input th:field="*{writerName}" type="text" class="form-control">
             </div>
         </div>
 
         <div class="form-group row" style="margin:20px">
-            <label class="col-sm-2">요구사항 - 1</label>
+            <label class="col-sm-6">원하는 포지션</label>
+            <div class="com-sm-3">
+                <select th:field="*{needPosition}" id="needPosition" name="needPosition">
+                    <option value="backend">backend</option>
+                    <option value="frontend">frontend</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="form-group row" style="margin:20px">
+            <label class="col-sm-7">요구사항 - 1</label>
             <div class="com-sm-3">
                 <input th:field="*{r_title1}" type="text" class="form-control">
             </div>
         </div>
 
         <div class="form-group row" style="margin:20px">
-            <label class="col-sm-2">상세 - 1</label>
+            <label class="col-sm-8">상세 - 1</label>
             <div class="com-sm-5">
                 <textarea th:field="*{r_content1}" cols="50" rows="2" class="form-control"></textarea>
             </div>

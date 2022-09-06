@@ -36,12 +36,14 @@ public class BoardService {
         String r_content2 = addFormDto.getR_content2();
         String r_content3 = addFormDto.getR_content3();
 
+        String needPosition = addFormDto.getNeedPosition();
+
         String uploadFileName = file.getUploadFileName(); // 사용자가 업로드한 파일명
         String storeFileName = file.getStoreFileName(); // 서버 내부 관리 파일명
 
 
         Board board = new Board(findMember, writerName, projectName, projectIntro, r_title1, r_title2,
-                r_title3, r_content1, r_content2, r_content3, uploadFileName, storeFileName);
+                r_title3, r_content1, r_content2, r_content3, uploadFileName, storeFileName, needPosition);
 
         boardRepository.save(board);
 

@@ -36,15 +36,17 @@ public class Board {
     private String r_content2;
     private String r_content3;
 
-    private String uploadFileName; // 사용자가 업로드한 파일명
-    private String storeFileName; // 서버 내부 관리 파일명
+    private String uploadFileName; // 사용자가 업로드한 이미지 파일명
+    private String storeFileName; // 서버 내부 이미지 관리 파일명
+
+    private String needPosition; // 원하는 포지션
 
 
-//    private String imageName;
-//    private MultipartFile attachFile;
-
-
-    public Board(Member member, String writerId, String title, String introduction, String r_title1, String r_title2, String r_title3, String r_content1, String r_content2, String r_content3, String uploadFileName, String storeFileName) {
+    public Board(Member member, String writerId, String title, String introduction,
+                 String r_title1, String r_title2, String r_title3,
+                 String r_content1, String r_content2, String r_content3,
+                 String uploadFileName, String storeFileName,
+                 String needPosition) {
         this.member = member;
         this.writerId = writerId;
         this.title = title;
@@ -57,6 +59,7 @@ public class Board {
         this.r_content3 = r_content3;
         this.uploadFileName = uploadFileName;
         this.storeFileName = storeFileName;
+        this.needPosition = needPosition;
     }
 
 
