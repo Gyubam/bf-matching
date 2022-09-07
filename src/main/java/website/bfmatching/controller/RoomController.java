@@ -10,12 +10,16 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+import website.bfmatching.entity.Chat;
+import website.bfmatching.entity.ChatRoom;
 import website.bfmatching.entity.Member;
+import website.bfmatching.repository.ChatRepository;
 import website.bfmatching.repository.ChatRoomRepository;
 import website.bfmatching.repository.MemberRepository;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+import java.util.List;
 
 @Controller
 @RequiredArgsConstructor
@@ -23,8 +27,9 @@ import javax.servlet.http.HttpSession;
 @RequestMapping(value = "/chat")
 public class RoomController {
 
-    private final ChatRoomRepository repository;
+    private final ChatRoomRepository chatRoomRepository;
     private final MemberRepository memberRepository;
+    private final ChatRepository chatRepository;
 
     //채팅방 목록 조회
     @GetMapping(value = "/rooms")
@@ -33,7 +38,9 @@ public class RoomController {
         log.info("# All Chat Rooms");
         ModelAndView mv = new ModelAndView("layout/chat/rooms");
 
-        mv.addObject("list", repository.findAllRooms());
+//        mv.addObject("list", chatRoomRepository.findAllRooms());
+
+        mv.addObject("list", chatRoomRepository.findAll());
 
         return mv;
     }
@@ -43,7 +50,8 @@ public class RoomController {
     public String create(@RequestParam String name, RedirectAttributes rttr){
 
         log.info("# Create Chat Room , name: " + name);
-        rttr.addFlashAttribute("roomName", repository.createChatRoomDTO(name));
+//        rttr.addFlashAttribute("roomName", chatRoomRepository.createChatRoomDTO(name));
+        ChatRoom save = chatRoomRepository.save(new ChatRoom(name));
         return "redirect:/chat/rooms";
     }
 
@@ -51,13 +59,17 @@ public class RoomController {
     @GetMapping("/room")
     public String getRoom(String roomId, Model model, HttpServletRequest request){
 
+        List<Chat> chatList = chatRepository.findByRoomIdOrderById(roomId);
+
+
         log.info("# get Chat Room, roomID : " + roomId);
         HttpSession session = request.getSession();
 
         Member findMember = memberRepository.findByLoginId(session.getAttribute("loginMemberId").toString());
 
         model.addAttribute("username", findMember.getLoginId());
-        model.addAttribute("room", repository.findRoomById(roomId));
+        model.addAttribute("room", chatRoomRepository.findByRoomId(roomId));
+        model.addAttribute("chatList", chatList);
 
         return "/layout/chat/room";
     }

@@ -5,12 +5,15 @@ import org.springframework.messaging.handler.annotation.MessageMapping;
 import org.springframework.messaging.simp.SimpMessagingTemplate;
 import org.springframework.stereotype.Controller;
 import website.bfmatching.Dto.ChatMessageDto;
+import website.bfmatching.entity.Chat;
+import website.bfmatching.repository.ChatRepository;
 
 @Controller
 @RequiredArgsConstructor
 public class StompChatController {
 
     private final SimpMessagingTemplate template; //특정 Broker로 메세지를 전달
+    private final ChatRepository chatRepository;
 
     //Client가 SEND할 수 있는 경로
     //stompConfig에서 설정한 applicationDestinationPrefixes와 @MessageMapping 경로가 병합됨
@@ -19,10 +22,13 @@ public class StompChatController {
     public void enter(ChatMessageDto message){
         message.setMessage(message.getWriter() + "님이 채팅방에 참여하였습니다.");
         template.convertAndSend("/sub/chat/room/" + message.getRoomId(), message);
+
     }
 
     @MessageMapping(value = "/chat/message")
     public void message(ChatMessageDto message){
         template.convertAndSend("/sub/chat/room/" + message.getRoomId(), message);
+        Chat chatLog = new Chat(message.getRoomId(), message.getWriter(), message.getMessage());
+        chatRepository.save(chatLog);
     }
 }

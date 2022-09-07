@@ -76,6 +76,11 @@
     </div>
     <div>
         <div id="msgArea" class="col"></div>
+            <div th:each="chat : ${chatList}" class='col-6'>
+                <div class='alert alert-secondary'>
+                    <b th:text="|${chat.writer} : ${chat.text}|"></b>
+                </div>
+            </div>
         <div class="col-6">
             <div class="input-group mb-3">
                 <input type="text" id="msg" class="form-control">
@@ -87,7 +92,6 @@
     </div>
     <div class="col-6"></div>
 </div>
-
 
 <script src="https://cdn.jsdelivr.net/npm/sockjs-client@1/dist/sockjs.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/stomp.js/2.3.3/stomp.min.js"></script>
