@@ -3,12 +3,22 @@
 <head>
     <meta charset="utf-8">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet" />
+    <!-- Core theme CSS (includes Bootstrap)-->
+    <link href="../css/styles.css" rel="stylesheet" />
     <style>
  .field-error {
  border-color: #dc3545;
  color: #dc3545;
  }
+    #msgArea {
+        border: 1px solid #735e5e;
+        height:600px;
+        overflow:scroll;
+        overflow-x: hidden;
+    }
+
+
  </style>
     <title>BF Matching</title>
 </head>
@@ -38,15 +48,15 @@
                        var str = '';
 
                        if(writer === username){
-                           str = "<div class='col-6'>";
-                           str += "<div class='alert alert-warning'>";
+                           str = "<div>";
+                           str += "<div class='alert alert-warning mx-5 my-3'>";
                            str += "<b>" + writer + " : " + content.message + "</b>";
                            str += "</div></div>";
 
                        }
                        else{
-                           str = "<div class='col-6'>";
-                           str += "<div class='alert alert-secondary'>";
+                           str = "<div>";
+                           str += "<div class='alert alert-secondary mx-5 my-3'>";
                            str += "<b>" + writer + " : " + content.message + "</b>";
                            str += "</div></div>";
 
@@ -70,27 +80,64 @@
             });
 </script>
 <body>
-<div class="container">
-    <div class="col-6">
-        <h1>[[${room.name}]]</h1>
+<!-- Navigation-->
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container px-4 px-lg-5">
+        <a class="navbar-brand" href="/">BF Matching</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-4">
+                <li class="nav-item"><a class="nav-link active" aria-current="page" href="/">Home</a></li>
+                <li class="nav-item"><a class="nav-link" href="#!">About</a></li>
+                <li th:if="${session.loginMember != null}" class="nav-item"><a class="nav-link" href="/post/add">Add Post</a></li>
+                <li th:if="${session.loginMember == null}" class="nav-item"><a class="nav-link" href="/login">LogIn</a></li>
+                <li th:if="${session.loginMember != null}" class="nav-item"><a class="nav-link" href="/logout">LogOut</a></li>
+                <!--                        <li class="nav-item dropdown">-->
+                <!--                            <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Shop</a>-->
+                <!--                            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">-->
+                <!--                                <li><a class="dropdown-item" href="#!">All Products</a></li>-->
+                <!--                                <li><hr class="dropdown-divider" /></li>-->
+                <!--                                <li><a class="dropdown-item" href="#!">Popular Items</a></li>-->
+                <!--                                <li><a class="dropdown-item" href="#!">New Arrivals</a></li>-->
+                <!--                            </ul>-->
+                <!--                        </li>-->
+            </ul>
+            <form class="d-flex">
+                <label style="margin:20px" th:if="${session.loginMember != null}" th:text="|${session.loginMemberId} 님 안녕하세요.|"></label>
+                <button class="btn btn-outline-dark" type="submit">
+                    <i class="bi bi-star-fill"></i>
+                    관심
+                    <span class="badge bg-dark text-white ms-1 rounded-pill">0</span>
+                </button>
+            </form>
+        </div>
     </div>
+</nav>
+<header class="bg-dark py-5">
+    <div class="container px-4 px-lg-5 my-5">
+        <div class="text-center text-white">
+            <h1 th:text="${room.name}" class="display-4 fw-bolder">채팅방 리스트</h1>
+            <p class="lead fw-normal text-white-50 mb-0">프로젝트 등록인과 대화해 보세요 !</p>
+        </div>
+    </div>
+</header>
+
+<div class="container w-50 p-3">
     <div>
-        <div id="msgArea" class="col"></div>
-            <div th:each="chat : ${chatList}" class='col-6'>
-                <div class='alert alert-secondary'>
+        <div id="msgArea">
+            <div th:each="chat : ${chatList}" >
+                <div class='alert alert-secondary mx-5 my-3'>
                     <b th:text="|${chat.writer} : ${chat.text}|"></b>
                 </div>
             </div>
-        <div class="col-6">
-            <div class="input-group mb-3">
+        </div>
+            <div class="input-group mb-3 my-2">
                 <input type="text" id="msg" class="form-control">
                 <div class="input-group-append">
                     <button class="btn btn-outline-secondary" type="button" id="button-send">전송</button>
                 </div>
             </div>
-        </div>
     </div>
-    <div class="col-6"></div>
 </div>
 
 <script src="https://cdn.jsdelivr.net/npm/sockjs-client@1/dist/sockjs.min.js"></script>

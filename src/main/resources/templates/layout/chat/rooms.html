@@ -73,7 +73,7 @@
 <header class="bg-dark py-5">
     <div class="container px-4 px-lg-5 my-5">
         <div class="text-center text-white">
-            <h1 class="display-4 fw-bolder">채팅방 리스트</h1>
+            <h1 class="display-4 fw-bolder">채팅방 목록</h1>
             <p class="lead fw-normal text-white-50 mb-0">현재 개설된 채팅방을 확인하세요 !</p>
         </div>
     </div>
@@ -81,7 +81,7 @@
 
 <div class="container">
     <div th:each="room : ${list}" class="list-group my-3">
-        <button type="button" class="list-group-item list-group-item-action list-group-item-dark active" aria-current="true">
+        <button type="button" class="list-group-item list-group-item-action list-group-item-dark" aria-current="true">
             클릭 시 채팅방에 입장합니다.
         </button>
         <button th:onclick="|location.href='@{/chat/room(roomId=${room.roomId})}'|" th:text="${room.name}" type="button" class="list-group-item list-group-item-action">A second item</button>
