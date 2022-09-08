@@ -42,3 +42,14 @@
 - 상세 화면 <br></br>
 ![상세화면1](https://user-images.githubusercontent.com/71515740/188825949-67a08179-308e-40e8-a6d2-e81924312c38.PNG)
 ![상세화면2](https://user-images.githubusercontent.com/71515740/188825975-f7bfed03-834b-45fc-b7dc-14522bc83b16.PNG)
+
+<br></br>
+<br></br>
+
+- 채팅 목록 화면 <br></br>
+![채팅목록 페이지](https://user-images.githubusercontent.com/71515740/189066691-95711b37-2506-4707-b57e-e3465203c9da.PNG)
+<br></br>
+<br></br>
+- 채팅 화면 <br></br>
+![채팅방 페이지](https://user-images.githubusercontent.com/71515740/189066696-92948a9c-547c-487e-b0f1-10965d5a21c5.PNG)
+
