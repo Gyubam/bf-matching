@@ -40,6 +40,14 @@
   <img src="https://img.shields.io/badge/BOOTSTRAP-7952B3.svg?&style=for-the-badge&logo=MySQL&logoColor=white">
 </div>
 
+### 개발 계획
+
+  <a href="https://spangle-yak-11c.notion.site/e12eeab0111749d29104ec27e60b6555">
+    <img src="https://img.shields.io/badge/Notion-000000?style=for-the-badge&logo=Notion&logoColor=white">
+  </a>
+
+<br></br>
+
 ## 실행 화면
 
 - 메인 화면 <br></br>
