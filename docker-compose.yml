@@ -1,0 +1,36 @@
+version: "3"
+
+services:
+  database:
+    image: mysql
+    container_name: bf_matching_db
+    environment:
+      MYSQL_DATABASE: bf_matching
+      MYSQL_ROOT_USER: root
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_ROOT_HOST: '%'
+    command: ['--character-set-server=utf8mb4', '--collation-server=utf8mb4_unicode_ci']
+    ports:
+      - 3307:3306
+    restart: always
+    volumes:
+      - /data/mysql
+
+
+  application:
+    build:
+      context: ./
+      dockerfile: Dockerfile
+    depends_on:
+      - database
+    ports:
+      - 8080:8080
+    container_name: bf_matching_app
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:mysql://database:3306/bf_matching?serverTimezone=Asia/Seoul
+      SPRING_DATASOURCE_USERNAME: root
+      SPRING_DATASOURCE_PASSWORD: root
+    restart: always
+    volumes:
+      - /usr/img
+
