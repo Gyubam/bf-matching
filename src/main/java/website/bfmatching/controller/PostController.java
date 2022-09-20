@@ -43,7 +43,7 @@ public class PostController {
     @GetMapping("/post/add")
     public String addForm(@ModelAttribute("addFormDto") AddFormDto addFormDto) {
 
-        return "/layout/addPostForm";
+        return "layout/addPostForm";
     }
 
     @PostMapping("/post/add")
@@ -73,9 +73,9 @@ public class PostController {
 
             model.addAttribute("board", boardData);
 
-            return "/layout/postInfo";
+            return "layout/postInfo";
         } else {
-            return "/layout/error/500";
+            return "layout/error/500";
         }
 
 
@@ -84,12 +84,13 @@ public class PostController {
     @GetMapping("/post/addd")
     public String Form() {
 
-        return "/layout/error/500";
+        return "layout/error/500";
     }
 
     @ResponseBody
     @GetMapping("/images/{filename}")
     public Resource downloadImage(@PathVariable String filename) throws MalformedURLException {
         return new UrlResource("file:" + fileStore.getFullPath(filename));
+//        return new UrlResource(fileStore.getFullPath(filename));
     }
 }

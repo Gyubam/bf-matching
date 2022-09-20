@@ -23,7 +23,7 @@ public class MemberController {
     @GetMapping("/members/new")
     public String addForm(@ModelAttribute("memberDto") MemberDto memberDto) {
 
-        return "/layout/login/addMemberForm";
+        return "layout/login/addMemberForm";
     }
 
     //회원가입
@@ -32,7 +32,7 @@ public class MemberController {
                        BindingResult bindingResult) throws IOException {
 
         if (bindingResult.hasErrors()) {
-            return "/layout/login/addMemberForm";
+            return "layout/login/addMemberForm";
         }
 
 

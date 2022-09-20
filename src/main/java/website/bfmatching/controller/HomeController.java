@@ -27,7 +27,7 @@ public class HomeController {
 
         model.addAttribute("boardList", boardList);
 
-        return "/index";
+        return "index";
     }
 
 

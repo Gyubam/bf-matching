@@ -71,6 +71,6 @@ public class RoomController {
         model.addAttribute("room", chatRoomRepository.findByRoomId(roomId));
         model.addAttribute("chatList", chatList);
 
-        return "/layout/chat/room";
+        return "layout/chat/room";
     }
 }

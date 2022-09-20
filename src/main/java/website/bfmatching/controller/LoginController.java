@@ -29,7 +29,7 @@ public class LoginController {
     @GetMapping("/login")
     public String loginForm(@ModelAttribute("loginForm") LoginForm form) {
 
-        return "/layout/login/loginForm";
+        return "layout/login/loginForm";
     }
 
     @PostMapping("/login")
@@ -40,7 +40,7 @@ public class LoginController {
                         Model model) {
 
         if (bindingResult.hasErrors()) {
-            return "/layout/login/loginForm";
+            return "layout/login/loginForm";
         }
 
         Member loginMember = loginService.login(form.getLoginId(), form.getPassword());
@@ -49,7 +49,7 @@ public class LoginController {
 
         if (loginMember == null) {
             bindingResult.reject("loginFail", "아이디 또는 비밀번호가 맞지 않습니다.");
-            return "/layout/login/loginForm";
+            return "layout/login/loginForm";
         }
 
         HttpSession session = request.getSession();

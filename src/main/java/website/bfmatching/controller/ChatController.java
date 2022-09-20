@@ -29,6 +29,6 @@ public class ChatController {
 
         log.info("chatGet()");
 
-        return "/layout/chat/chat";
+        return "layout/chat/chat";
     }
 }
