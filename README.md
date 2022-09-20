@@ -5,6 +5,16 @@
 백엔드 개발자 또는 프론트엔드 개발자의 경우, 웹 프로젝트를 진행하는데 있어 백엔드와 프론트엔드 모두 구현하기엔 부담이 되는 경우가 있다. 또는 특정 아이디어와 주제를 가지고 토이 프로젝트를 진행할 때, 개인보단 팀 단위로 프로젝트를 진행하기 원하는 경우도 있다. <br></br> 이러한 상황에 해당 웹 사이트를 통해, 사용자는 프로젝트의 주제를 제안할 수 있고, 프로젝트 진행시에 요구되는 요구사항들을 제공함으로써, 해당 프로젝트를 협업을 통해 개발하기 원하는 개발자들의 매칭을 목표로 설정했다. <br></br> 따라서 개발자는 개발 시에 자신의 전문 분야에만 집중할 수 있다. 또한 개인으로 진행하는 프로젝트보단 팀 단위로 진행함으로써, 프론트엔드 개발자와 백엔드 개발자간의 의사소통 능력 향상에도 도움이 될 것이라고 생각한다.
 <br></br>
 
+## WBS
+![BF WBS](https://user-images.githubusercontent.com/71515740/190967400-ef76d126-49f3-4aa2-b3cf-d2f09448c905.PNG)
+
+<br>
+
+## ERD 설계
+![BF ERD모델](https://user-images.githubusercontent.com/71515740/190967380-98266f0f-5406-4ecd-b020-1550ab85c9e8.png)
+
+<br>
+
 ## 기술 스택
 ### Framework
 <div> 
@@ -29,6 +39,14 @@
 <div>
   <img src="https://img.shields.io/badge/BOOTSTRAP-7952B3.svg?&style=for-the-badge&logo=MySQL&logoColor=white">
 </div>
+
+### 개발 계획
+
+  <a href="https://spangle-yak-11c.notion.site/e12eeab0111749d29104ec27e60b6555">
+    <img src="https://img.shields.io/badge/Notion-000000?style=for-the-badge&logo=Notion&logoColor=white">
+  </a>
+
+<br></br>
 
 ## 실행 화면
 
