@@ -91,10 +91,46 @@ public class PostController {
 
     }
 
-    @GetMapping("/post/addd")
-    public String Form() {
+    @GetMapping("/post/edit/{postId}")
+    public String editForm(@PathVariable("postId") Long boardId,
+                           Model model){
 
-        return "layout/error/500";
+        Optional<Board> boardOptional = boardRepository.findById(boardId);
+
+
+        if (boardOptional.isPresent()) {
+
+            Board boardData = boardOptional.get();
+
+            AddFormDto addFormDto = new AddFormDto(boardData.getTitle(), boardData.getIntroduction(),
+                    boardData.getWriterId(), boardData.getR_title1(), boardData.getR_title2(), boardData.getR_title3(),
+                    boardData.getR_content1(), boardData.getR_content2(), boardData.getR_content3(),
+                    boardData.getNeedPosition());
+//            model.addAttribute("board", boardData);
+
+            model.addAttribute("addFormDto", addFormDto);
+
+            return "layout/editPostForm";
+        } else {
+            return "layout/error/500";
+        }
+
+    }
+
+    @PostMapping("/post/edit/{postId}")
+    public String edit(@Validated @ModelAttribute("addFormDto") AddFormDto addFormDto,
+                       BindingResult bindingResult,
+                       @PathVariable("postId") Long boardId){
+
+        if (bindingResult.hasErrors()) {
+            log.info("errors={}", bindingResult);
+            return "layout/editPostForm";
+        }
+
+        boardService.editPost(boardId, addFormDto);
+
+        return "redirect:/";
+
     }
 
     @ResponseBody

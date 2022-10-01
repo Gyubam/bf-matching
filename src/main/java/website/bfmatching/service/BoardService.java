@@ -10,8 +10,11 @@ import website.bfmatching.file.UploadFile;
 import website.bfmatching.repository.BoardRepository;
 import website.bfmatching.repository.MemberRepository;
 
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
@@ -20,6 +23,8 @@ public class BoardService {
 
     private final MemberRepository memberRepository;
     private final BoardRepository boardRepository;
+
+    private final EntityManager entityManager;
 
     @Transactional
     public Long save(String loginId, AddFormDto addFormDto, UploadFile file) {
@@ -48,6 +53,28 @@ public class BoardService {
         boardRepository.save(board);
 
         return board.getId();
+    }
+
+    @Transactional
+    public void editPost(Long boardId, AddFormDto addFormDto){
+
+        Optional<Board> board = boardRepository.findById(boardId);
+
+        if (board.isPresent()){
+
+            Board boardData = board.get();
+
+            boardData.editBoard(addFormDto.getWriterName(), addFormDto.getProjectName(),
+                    addFormDto.getProjectIntro(), addFormDto.getR_title1(), addFormDto.getR_title2(),
+                    addFormDto.getR_title3(), addFormDto.getR_content1(), addFormDto.getR_content2(),
+                    addFormDto.getR_content3(), addFormDto.getNeedPosition());
+
+        }
+
+//        entityManager.flush();
+//        entityManager.clear();
+
+
     }
 
 

@@ -6,4 +6,5 @@ import website.bfmatching.entity.Board;
 public interface BoardRepository extends JpaRepository<Board, Long> {
 
 
+
 }

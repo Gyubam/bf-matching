@@ -65,4 +65,21 @@ public class Board {
 
     public Board() {
     }
+
+    public void editBoard(String writerId, String title, String introduction,
+                     String r_title1, String r_title2, String r_title3,
+                     String r_content1, String r_content2, String r_content3,
+                     String needPosition) {
+        this.writerId = writerId;
+        this.title = title;
+        this.introduction = introduction;
+        this.r_title1 = r_title1;
+        this.r_title2 = r_title2;
+        this.r_title3 = r_title3;
+        this.r_content1 = r_content1;
+        this.r_content2 = r_content2;
+        this.r_content3 = r_content3;
+        this.needPosition = needPosition;
+
+    }
 }
