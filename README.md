@@ -40,6 +40,12 @@
   <img src="https://img.shields.io/badge/BOOTSTRAP-7952B3.svg?&style=for-the-badge&logo=MySQL&logoColor=white">
 </div>
 
+### DevOps
+<div> 
+  <img src="https://img.shields.io/badge/Amazon AWS-232F3E?style=for-the-badge&logo=Amazon%20AWS&logoColor=white">
+  <img alt="Docker" src="https://img.shields.io/badge/Docker-2496ED?style=for-the-badge&logo=Docker&logoColor=white">
+</div>
+
 ### 개발 계획
 
   <a href="https://spangle-yak-11c.notion.site/e12eeab0111749d29104ec27e60b6555">
