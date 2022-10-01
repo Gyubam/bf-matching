@@ -23,6 +23,7 @@
                         <li class="nav-item"><a class="nav-link" href="#!">About</a></li>
                         <li class="nav-item"><a class="nav-link" href="#!">Contact</a></li>
                         <li th:if="${session.loginMember != null}" class="nav-item"><a class="nav-link" th:href="@{/post/edit/{postId} (postId=${board.id})}">Edit</a></li>
+                        <li th:if="${session.loginMember != null}" class="nav-item"><a class="nav-link" th:href="@{/post/delete/{postId} (postId=${board.id})}">Delete</a></li>
 
                         <!--                        <li class="nav-item"><a class="nav-link" href="#!">Services</a></li>-->
                     </ul>

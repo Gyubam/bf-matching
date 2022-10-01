@@ -73,7 +73,19 @@ public class BoardService {
 
 //        entityManager.flush();
 //        entityManager.clear();
+    }
 
+    @Transactional
+    public void deletePost(Long boardId) {
+
+        Optional<Board> board = boardRepository.findById(boardId);
+
+        if (board.isPresent()){
+
+            Board boardData = board.get();
+
+            boardRepository.delete(boardData);
+        }
 
     }
 
