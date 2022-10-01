@@ -20,6 +20,7 @@ import website.bfmatching.file.UploadFile;
 import website.bfmatching.repository.BoardRepository;
 import website.bfmatching.repository.MemberRepository;
 import website.bfmatching.service.BoardService;
+import website.bfmatching.service.MemberService;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -33,10 +34,10 @@ import java.util.Optional;
 @Slf4j
 public class PostController {
 
-    private final MemberRepository memberRepository;
-    private final BoardRepository boardRepository;
+    private final MemberService memberService;
     private final BoardService boardService;
     private final FileStore fileStore;
+
 
 
     @Value("${file.dir}")
@@ -62,7 +63,7 @@ public class PostController {
             return "layout/addPostForm";
         }
 
-        Member findMember = memberRepository.findByLoginId(session.getAttribute("loginMemberId").toString());
+        Member findMember = memberService.findByLoginId(session.getAttribute("loginMemberId").toString());
         UploadFile attachFile = fileStore.storeFile(addFormDto.getAttachFile());
         Long boardId = boardService.save(findMember.getLoginId(), addFormDto, attachFile);
 
@@ -74,14 +75,11 @@ public class PostController {
     @GetMapping("/post/{postId}")
     public String info(@PathVariable("postId") Long boardId, Model model) {
 
-        Optional<Board> boardOptional = boardRepository.findById(boardId);
+        Board board = boardService.findOne(boardId);
 
+        if (board != null) {
 
-        if (boardOptional.isPresent()) {
-
-            Board boardData = boardOptional.get();
-
-            model.addAttribute("board", boardData);
+            model.addAttribute("board", board);
 
             return "layout/postInfo";
         } else {
@@ -95,17 +93,14 @@ public class PostController {
     public String editForm(@PathVariable("postId") Long boardId,
                            Model model){
 
-        Optional<Board> boardOptional = boardRepository.findById(boardId);
+        Board board = boardService.findOne(boardId);
 
+        if (board != null) {
 
-        if (boardOptional.isPresent()) {
-
-            Board boardData = boardOptional.get();
-
-            AddFormDto addFormDto = new AddFormDto(boardData.getTitle(), boardData.getIntroduction(),
-                    boardData.getWriterId(), boardData.getR_title1(), boardData.getR_title2(), boardData.getR_title3(),
-                    boardData.getR_content1(), boardData.getR_content2(), boardData.getR_content3(),
-                    boardData.getNeedPosition());
+            AddFormDto addFormDto = new AddFormDto(board.getTitle(), board.getIntroduction(),
+                    board.getWriterId(), board.getR_title1(), board.getR_title2(), board.getR_title3(),
+                    board.getR_content1(), board.getR_content2(), board.getR_content3(),
+                    board.getNeedPosition());
 //            model.addAttribute("board", boardData);
 
             model.addAttribute("addFormDto", addFormDto);

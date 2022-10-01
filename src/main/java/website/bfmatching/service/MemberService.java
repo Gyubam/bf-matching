@@ -16,4 +16,15 @@ public class MemberService {
         Member member = memberDto.toEntity();    //memberDto -> member로 변환.
         memberRepository.save(member);
     }
+
+    public Member findByLoginId(String loginId){
+        Member member = memberRepository.findByLoginId(loginId);
+
+        if (member != null) {
+            return member;
+        }
+        else {
+            return null;
+        }
+    }
 }

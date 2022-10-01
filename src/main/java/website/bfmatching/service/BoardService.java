@@ -27,6 +27,18 @@ public class BoardService {
     private final EntityManager entityManager;
 
     @Transactional
+    public Board findOne(Long boardId){
+        Optional<Board> board = boardRepository.findById(boardId);
+
+        if (board.isPresent()) {
+            return board.get();
+        }
+        else {
+            return null;
+        }
+    }
+
+    @Transactional
     public Long save(String loginId, AddFormDto addFormDto, UploadFile file) {
 
         Member findMember = memberRepository.findByLoginId(loginId);
