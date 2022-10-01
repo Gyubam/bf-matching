@@ -1,23 +1,41 @@
 package website.bfmatching.Dto;
 
 import lombok.Data;
+import lombok.NoArgsConstructor;
 import org.springframework.web.multipart.MultipartFile;
 import website.bfmatching.file.UploadFile;
 
+import javax.validation.constraints.NotBlank;
+
 @Data
+@NoArgsConstructor
 public class AddFormDto {
 
+    @NotBlank(message = "값을 입력해주세요.")
     private String projectName;
+
+    @NotBlank(message = "값을 입력해주세요.")
     private String projectIntro;
 
+    @NotBlank(message = "값을 입력해주세요.")
     private String writerName;
 
+    @NotBlank(message = "값을 입력해주세요.")
     private String r_title1;
+
+    @NotBlank(message = "값을 입력해주세요.")
     private String r_title2;
+
+    @NotBlank(message = "값을 입력해주세요.")
     private String r_title3;
 
+    @NotBlank(message = "값을 입력해주세요.")
     private String r_content1;
+
+    @NotBlank(message = "값을 입력해주세요.")
     private String r_content2;
+
+    @NotBlank(message = "값을 입력해주세요.")
     private String r_content3;
 
     private MultipartFile attachFile;

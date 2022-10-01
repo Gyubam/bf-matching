@@ -12,6 +12,14 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet" />
     <!-- Core theme CSS (includes Bootstrap)-->
     <link href="../css/styles.css" rel="stylesheet" />
+
+    <style>
+        .field-error {
+            border-color: #dc3545;
+            color: #dc3545;
+        }
+
+    </style>
 </head>
 
 <body>
@@ -66,22 +74,31 @@
 
         <div class="form-group row" style="margin:20px">
             <label class="col-sm-2">프로젝트 이름</label>
+            <div class="field-error" th:errors="*{projectName}">
+                공백 오류
+            </div>
             <div class="com-sm-3">
-                <input th:field="*{projectName}" type="text" class="form-control">
+                <input th:field="*{projectName}" type="text" class="form-control" th:errorclass="field-error">
             </div>
         </div>
 
         <div class="form-group row" style="margin:20px">
             <label class="col-sm-5">프로젝트 소개</label>
+            <div class="field-error" th:errors="*{projectIntro}">
+                공백 오류
+            </div>
             <div class="com-sm-3">
-                <input th:field="*{projectIntro}" type="text" class="form-control">
+                <input th:field="*{projectIntro}" type="text" class="form-control" th:errorclass="field-error">
             </div>
         </div>
 
         <div class="form-group row" style="margin:20px">
             <label class="col-sm-6">작성자 id</label>
+            <div class="field-error" th:errors="*{writerName}">
+                공백 오류
+            </div>
             <div class="com-sm-3">
-                <input th:field="*{writerName}" type="text" class="form-control">
+                <input th:field="*{writerName}" type="text" class="form-control" th:errorclass="field-error">
             </div>
         </div>
 
@@ -97,43 +114,61 @@
 
         <div class="form-group row" style="margin:20px">
             <label class="col-sm-7">요구사항 - 1</label>
+            <div class="field-error" th:errors="*{r_title1}">
+                공백 오류
+            </div>
             <div class="com-sm-3">
-                <input th:field="*{r_title1}" type="text" class="form-control">
+                <input th:field="*{r_title1}" type="text" class="form-control" th:errorclass="field-error">
             </div>
         </div>
 
         <div class="form-group row" style="margin:20px">
             <label class="col-sm-8">상세 - 1</label>
+            <div class="field-error" th:errors="*{r_content1}">
+                공백 오류
+            </div>
             <div class="com-sm-5">
-                <textarea th:field="*{r_content1}" cols="50" rows="2" class="form-control"></textarea>
+                <textarea th:field="*{r_content1}" cols="50" rows="2" class="form-control" th:errorclass="field-error"></textarea>
             </div>
         </div>
 
         <div class="form-group row" style="margin:20px">
             <label class="col-sm-2">요구사항 - 2</label>
+            <div class="field-error" th:errors="*{r_title2}">
+                공백 오류
+            </div>
             <div class="com-sm-3">
-                <input th:field="*{r_title2}" type="text" class="form-control">
+                <input th:field="*{r_title2}" type="text" class="form-control" th:errorclass="field-error">
             </div>
         </div>
 
         <div class="form-group row" style="margin:20px">
             <label class="col-sm-2">상세 - 2</label>
+            <div class="field-error" th:errors="*{r_content2}">
+                공백 오류
+            </div>
             <div class="com-sm-5">
-                <textarea th:field="*{r_content2}" cols="50" rows="2" class="form-control"></textarea>
+                <textarea th:field="*{r_content2}" cols="50" rows="2" class="form-control" th:errorclass="field-error"></textarea>
             </div>
         </div>
 
         <div class="form-group row" style="margin:20px">
             <label class="col-sm-2">요구사항 - 3</label>
+            <div class="field-error" th:errors="*{r_title3}">
+                공백 오류
+            </div>
             <div class="com-sm-3">
-                <input th:field="*{r_title3}" type="text" class="form-control">
+                <input th:field="*{r_title3}" type="text" class="form-control" th:errorclass="field-error">
             </div>
         </div>
 
         <div class="form-group row" style="margin:20px">
             <label class="col-sm-2">상세 - 3</label>
+            <div class="field-error" th:errors="*{r_content3}">
+                공백 오류
+            </div>
             <div class="com-sm-5">
-                <textarea th:field="*{r_content3}" cols="50" rows="2" class="form-control"></textarea>
+                <textarea th:field="*{r_content3}" cols="50" rows="2" class="form-control" th:errorclass="field-error"></textarea>
             </div>
         </div>
 

@@ -8,6 +8,8 @@ import org.springframework.core.io.UrlResource;
 import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import website.bfmatching.Dto.AddFormDto;
@@ -41,16 +43,24 @@ public class PostController {
     private String fileDir;
 
     @GetMapping("/post/add")
-    public String addForm(@ModelAttribute("addFormDto") AddFormDto addFormDto) {
+    public String addForm(AddFormDto addFormDto,
+                          Model model) {
 
+        model.addAttribute("addFormDto", new AddFormDto());
         return "layout/addPostForm";
     }
 
     @PostMapping("/post/add")
-    public String save(@ModelAttribute("addFormDto") AddFormDto addFormDto,
+    public String save(@Validated @ModelAttribute("addFormDto") AddFormDto addFormDto,
+                       BindingResult bindingResult,
                        HttpServletRequest request) throws IOException {
 
         HttpSession session = request.getSession();
+
+        if (bindingResult.hasErrors()) {
+            log.info("errors={}", bindingResult);
+            return "layout/addPostForm";
+        }
 
         Member findMember = memberRepository.findByLoginId(session.getAttribute("loginMemberId").toString());
         UploadFile attachFile = fileStore.storeFile(addFormDto.getAttachFile());
@@ -91,6 +101,5 @@ public class PostController {
     @GetMapping("/images/{filename}")
     public Resource downloadImage(@PathVariable String filename) throws MalformedURLException {
         return new UrlResource("file:" + fileStore.getFullPath(filename));
-//        return new UrlResource(fileStore.getFullPath(filename));
     }
 }
