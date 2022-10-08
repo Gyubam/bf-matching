@@ -33,14 +33,14 @@ public class InitDb {
         private final BoardService boardService;
 
         public void dbInit1() {
-            Member member1 = new Member("CoCo", "1234");
-            Member member2 = new Member("sgb8170", "1234");
-            Member member3 = new Member("koh2110", "1234");
-            Member member4 = new Member("ILLIYA", "12345");
-            Member member5 = new Member("Maker", "12345");
-            Member member6 = new Member("king33", "12345");
-            Member member7 = new Member("Jackson", "12345");
-            Member member8 = new Member("smith", "12345");
+            Member member1 = new Member("CoCo", "1234", "ROLE_USER");
+            Member member2 = new Member("sgb8170", "1234", "ROLE_USER");
+            Member member3 = new Member("koh2110", "1234", "ROLE_USER");
+            Member member4 = new Member("ILLIYA", "12345", "ROLE_USER");
+            Member member5 = new Member("Maker", "12345", "ROLE_USER");
+            Member member6 = new Member("king33", "12345", "ROLE_USER");
+            Member member7 = new Member("Jackson", "12345", "ROLE_USER");
+            Member member8 = new Member("smith", "12345", "ROLE_USER");
 
             em.persist(member1);
             em.persist(member2);
