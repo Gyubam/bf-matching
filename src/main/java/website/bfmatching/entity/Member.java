@@ -32,10 +32,18 @@ public class Member {
     @JoinColumn(name = "team_id")
     private Team team;
 
+    public Member(String loginId, String password, String role) {
+        this.loginId = loginId;
+        this.password = password;
+        this.role = role;
+    }
+
     public Member(String loginId, String password) {
         this.loginId = loginId;
         this.password = password;
     }
+
+    private String role;
 
 
     public Member() {
