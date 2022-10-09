@@ -12,7 +12,7 @@ import java.util.HashMap;
 @Entity
 @Getter
 @ToString
-public class Chat {
+public class Chat extends BaseTimeEntity{
 
     @Id
     @GeneratedValue
