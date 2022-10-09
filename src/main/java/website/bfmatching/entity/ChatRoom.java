@@ -11,7 +11,7 @@ import java.util.UUID;
 @Entity
 @Getter
 @Setter
-public class ChatRoom {
+public class ChatRoom extends BaseTimeEntity{
 
     @Id
     @GeneratedValue

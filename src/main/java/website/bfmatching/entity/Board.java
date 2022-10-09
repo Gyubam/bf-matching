@@ -2,16 +2,13 @@ package website.bfmatching.entity;
 
 import lombok.Getter;
 import lombok.ToString;
-import org.springframework.web.multipart.MultipartFile;
 
 import javax.persistence.*;
-import java.util.ArrayList;
-import java.util.List;
 
 @Entity
 @Getter
 @ToString
-public class Board {
+public class Board extends BaseTimeEntity {
 
     @Id
     @GeneratedValue

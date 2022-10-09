@@ -6,7 +6,7 @@ import javax.persistence.*;
 
 @Entity
 @Getter
-public class Wish {
+public class Wish extends BaseTimeEntity{
 
     @Id
     @GeneratedValue
