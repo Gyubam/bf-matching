@@ -28,4 +28,6 @@ public class MemberDto {
         this.loginId = loginId;
         this.password = password;
     }
+
+
 }

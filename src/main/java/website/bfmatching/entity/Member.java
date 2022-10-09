@@ -1,11 +1,13 @@
 package website.bfmatching.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import lombok.Builder;
 import lombok.Getter;
 
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
+
 
 @Entity
 @Getter
@@ -18,7 +20,7 @@ public class Member {
 
     private String loginId;
     private String password;
-    private String memberName;
+    private String username;
 
     @OneToMany(mappedBy = "member")
     @JsonIgnore
@@ -45,7 +47,20 @@ public class Member {
 
     private String role;
 
+    private String provider;
+    private String providerId;
 
     public Member() {
+    }
+
+    @Builder
+    public Member(String username, String loginId, String password, String role, String provider, String providerId) {
+
+        this.username = username;
+        this.loginId = loginId;
+        this.password = password;
+        this.role = role;
+        this.provider = provider;
+        this.providerId = providerId;
     }
 }
