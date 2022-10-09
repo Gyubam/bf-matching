@@ -52,5 +52,10 @@ public class HomeController {
         return "index";
     }
 
+    @GetMapping("test")
+    public String testMerge() {
+        return "testIndex";
+    }
+
 
 }
