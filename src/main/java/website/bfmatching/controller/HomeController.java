@@ -20,12 +20,17 @@ public class HomeController {
     private final MemberRepository memberRepository;
 
     @GetMapping("/")
-
     public String home(Model model) {
 
         List<Board> boardList = boardRepository.findAll();
 
         model.addAttribute("boardList", boardList);
+
+        return "index";
+    }
+
+    @GetMapping
+    public String testMerge(Model model) {
 
         return "index";
     }
