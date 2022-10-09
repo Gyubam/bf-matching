@@ -23,4 +23,11 @@ public class MemberDto {
     public Member toEntity(){     //DTO -> 엔티티
         return new Member(loginId, password);
     }
+
+    public MemberDto(String loginId, String password) {
+        this.loginId = loginId;
+        this.password = password;
+    }
+
+
 }

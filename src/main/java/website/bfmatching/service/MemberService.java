@@ -12,8 +12,11 @@ public class MemberService {
 
     private final MemberRepository memberRepository;
 
-    public void registerDB(MemberDto memberDto){
-        Member member = memberDto.toEntity();    //memberDto -> member로 변환.
+    public void registerDB(MemberDto memberDto){//memberDto -> member로 변환.
+        Member member = new Member(
+                memberDto.getLoginId(),
+                memberDto.getPassword(),
+                "ROLE_USER");
         memberRepository.save(member);
     }
 

@@ -1,6 +1,7 @@
 package website.bfmatching.controller;
 
 import lombok.AllArgsConstructor;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -16,8 +17,8 @@ import java.io.IOException;
 @AllArgsConstructor
 public class MemberController {
 
-    private MemberService memberService;
-
+    private final MemberService memberService;
+    private final BCryptPasswordEncoder bCryptPasswordEncoder;
 
     //회원가입 폼
     @GetMapping("/members/new")
@@ -35,9 +36,12 @@ public class MemberController {
             return "layout/login/addMemberForm";
         }
 
+        String rawPassword = memberDto.getPassword();
+        String encPassword = bCryptPasswordEncoder.encode(rawPassword);
 
+        MemberDto memberDtoForSave = new MemberDto(memberDto.getLoginId(), encPassword);
 
-        memberService.registerDB(memberDto);
+        memberService.registerDB(memberDtoForSave);
 
         return "redirect:/login";
     }
