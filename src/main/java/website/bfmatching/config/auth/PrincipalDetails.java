@@ -3,6 +3,7 @@ package website.bfmatching.config.auth;
 import lombok.Getter;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.oauth2.core.user.OAuth2User;
 import website.bfmatching.entity.Member;
 
 import java.util.ArrayList;
@@ -10,13 +11,20 @@ import java.util.Collection;
 import java.util.Map;
 
 @Getter
-public class PrincipalDetails implements UserDetails {
+public class PrincipalDetails implements UserDetails, OAuth2User {
 
     private Member member;
     private Map<String, Object> attributes;
 
+    // 일반 로그인
     public PrincipalDetails(Member member) {
         this.member = member;
+    }
+
+    // OAuth 로그인
+    public PrincipalDetails(Member member, Map<String,Object> attributes) {
+        this.member = member;
+        this.attributes = attributes;
     }
 
 
@@ -62,5 +70,13 @@ public class PrincipalDetails implements UserDetails {
         return true;
     }
 
+    @Override
+    public Map<String, Object> getAttributes() {
+        return attributes;
+    }
 
+    @Override
+    public String getName() {
+        return null;
+    }
 }
