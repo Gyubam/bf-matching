@@ -60,21 +60,55 @@ public class SaveDataTest {
     public void saveMemberWithTeam() {
         //given
         TeamDto teamDto = new TeamDto("team1", 4);
-        teamService.save(teamDto);
+
 
         MemberDto memberDto = new MemberDto("asdf", "1234");
         memberService.registerDB(memberDto);
 
-        //when
-        Team findTeam = teamRepository.findByTeamName(teamDto.getTeamName());
-        Member findMember = memberService.findByLoginId("asdf");
 
-        findMember.changeTeam(findTeam);
+        //when
+
+        teamService.saveTeam(teamDto, memberDto.getLoginId());
+
+        Team findTeam = teamRepository.findByTeamName(teamDto.getTeamName());
+        Member findMember = memberService.findByLoginId(memberDto.getLoginId());
+
 
         //then
         assertThat(findMember.getTeam().getTeamName()).isEqualTo(findTeam.getTeamName());
 
     }
 
+    @Test
+    @Transactional
+    @Rollback(value = false)
+    public void joinTeam() {
 
+        //given
+        TeamDto teamDto = new TeamDto("team1", 4);
+
+
+        MemberDto memberDto = new MemberDto("asdf", "1234");
+        memberService.registerDB(memberDto);
+
+        MemberDto memberDto2 = new MemberDto("asdf2", "1234");
+        memberService.registerDB(memberDto2);
+
+        teamService.saveTeam(teamDto, memberDto.getLoginId());
+
+        //when
+        Team findTeam = teamRepository.findByTeamName(teamDto.getTeamName());
+        Member findMember = memberService.findByLoginId(memberDto.getLoginId());
+
+        teamService.joinTeam(teamDto, memberDto2.getLoginId());
+
+        Member findMember2 = memberService.findByLoginId(memberDto2.getLoginId());
+
+        //then
+        assertThat(findMember2.getTeam().getTeamName()).isEqualTo(findTeam.getTeamName());
+        assertThat(findTeam.getCurrentNum()).isEqualTo(2);
+
+
+
+    }
 }

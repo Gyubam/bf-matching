@@ -26,6 +26,12 @@ public class Team extends BaseTimeEntity{
     @JsonIgnore
     private List<Member> memberList = new ArrayList<>();
 
+    public Integer plusCurrentNum() {
+        this.currentNum ++;
+
+        return this.currentNum;
+    }
+
     public Team(String teamName) {
         this.teamName = teamName;
     }
