@@ -22,6 +22,11 @@ public class Member extends BaseTimeEntity {
     private String password;
     private String username;
 
+    private String role;
+
+    private String provider;
+    private String providerId;
+
     @OneToMany(mappedBy = "member")
     @JsonIgnore
     private List<Board> boardList = new ArrayList<>();
@@ -34,6 +39,11 @@ public class Member extends BaseTimeEntity {
     @JoinColumn(name = "team_id")
     private Team team;
 
+    public void changeTeam(Team team) {
+        this.team = team;
+
+    }
+
     public Member(String loginId, String password, String role) {
         this.loginId = loginId;
         this.password = password;
@@ -44,11 +54,6 @@ public class Member extends BaseTimeEntity {
         this.loginId = loginId;
         this.password = password;
     }
-
-    private String role;
-
-    private String provider;
-    private String providerId;
 
     public Member() {
     }

@@ -5,9 +5,11 @@ import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
 import website.bfmatching.Dto.AddFormDto;
+import website.bfmatching.entity.Board;
 import website.bfmatching.entity.Member;
 import website.bfmatching.file.UploadFile;
 import website.bfmatching.service.BoardService;
+import website.bfmatching.service.MemberService;
 
 import javax.annotation.PostConstruct;
 import javax.persistence.EntityManager;
@@ -31,6 +33,7 @@ public class InitDb {
 
         private final EntityManager em;
         private final BoardService boardService;
+        private final MemberService memberService;
 
         public void dbInit1() {
             Member member1 = new Member("CoCo", "1234", "ROLE_USER");
@@ -47,6 +50,9 @@ public class InitDb {
             em.persist(member3);
             em.persist(member4);
             em.persist(member5);
+            em.persist(member6);
+            em.persist(member7);
+            em.persist(member8);
 
 
 

@@ -5,4 +5,5 @@ import website.bfmatching.entity.Team;
 
 public interface TeamRepository extends JpaRepository<Team, Long> {
 
+    Team findByTeamName(String teamName);
 }

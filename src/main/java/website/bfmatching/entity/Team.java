@@ -18,7 +18,21 @@ public class Team extends BaseTimeEntity{
 
     private String teamName;
 
+    private Integer maxNum;
+
+    private Integer currentNum;
+
     @OneToMany(mappedBy = "team")
     @JsonIgnore
     private List<Member> memberList = new ArrayList<>();
+
+    public Team(String teamName) {
+        this.teamName = teamName;
+    }
+
+    public Team(String teamName, Integer maxNum, Integer currentNum) {
+        this.teamName = teamName;
+        this.maxNum = maxNum;
+        this.currentNum = currentNum;
+    }
 }
