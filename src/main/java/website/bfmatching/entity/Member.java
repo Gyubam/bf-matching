@@ -41,7 +41,7 @@ public class Member extends BaseTimeEntity {
 
     public void changeTeam(Team team) {
         this.team = team;
-
+        team.getMemberList().add(this);
     }
 
     public Member(String loginId, String password, String role) {

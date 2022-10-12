@@ -18,9 +18,9 @@ public class Team extends BaseTimeEntity{
 
     private String teamName;
 
-    private Integer maxNum;
+    private int maxNum;
 
-    private Integer currentNum;
+    private int currentNum;
 
     @OneToMany(mappedBy = "team")
     @JsonIgnore
@@ -28,6 +28,12 @@ public class Team extends BaseTimeEntity{
 
     public Integer plusCurrentNum() {
         this.currentNum ++;
+
+        return this.currentNum;
+    }
+
+    public Integer minusCurrentNum() {
+        this.currentNum --;
 
         return this.currentNum;
     }
@@ -40,5 +46,9 @@ public class Team extends BaseTimeEntity{
         this.teamName = teamName;
         this.maxNum = maxNum;
         this.currentNum = currentNum;
+    }
+
+    public Team() {
+
     }
 }

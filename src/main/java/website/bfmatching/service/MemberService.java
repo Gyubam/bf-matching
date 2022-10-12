@@ -7,6 +7,8 @@ import website.bfmatching.Dto.MemberDto;
 import website.bfmatching.entity.Member;
 import website.bfmatching.repository.MemberRepository;
 
+import java.util.List;
+
 @Service
 @RequiredArgsConstructor
 public class MemberService {
@@ -32,5 +34,12 @@ public class MemberService {
         else {
             return null;
         }
+    }
+
+    @Transactional
+    public List<Member> findByTeamId(Long id) {
+        List<Member> findMembers = memberRepository.findByTeamId(id);
+
+        return findMembers;
     }
 }

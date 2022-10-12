@@ -5,6 +5,7 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import website.bfmatching.entity.Member;
 
+import java.util.List;
 import java.util.Optional;
 
 public interface MemberRepository extends JpaRepository<Member, Long> {
@@ -14,6 +15,8 @@ public interface MemberRepository extends JpaRepository<Member, Long> {
     Optional<Member> findById(Long id);
 
     public Member findByUsername(String username);
+
+    List<Member> findByTeamId(Long id);
 
 
 }

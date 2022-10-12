@@ -39,7 +39,7 @@
                     </ul>
                     <form class="d-flex">
                         <label style="margin:20px" th:if="${session.loginMember != null}" th:text="|${session.loginMemberId} 님 안녕하세요.|"></label>
-                        <button class="btn btn-outline-dark" type="submit">
+                        <button th:onclick ="|location.href='@{/team}'|" class="btn btn-outline-dark" type="button">
                             <i class="bi bi-star-fill"></i>
                             관심
                             <span class="badge bg-dark text-white ms-1 rounded-pill">0</span>

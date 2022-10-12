@@ -28,6 +28,7 @@ public class SecurityConfig {
                 .antMatchers("/rooms/**").access("hasRole('ROLE_USER') or hasRole('ROLE_MANAGER') or hasRole('ROLE_ADMIN')")
                 .antMatchers("/room/**").access("hasRole('ROLE_USER') or hasRole('ROLE_MANAGER') or hasRole('ROLE_ADMIN')")
                 .antMatchers("/sub/chat/room").access("hasRole('ROLE_USER') or hasRole('ROLE_MANAGER') or hasRole('ROLE_ADMIN')")
+                .antMatchers("/team/**").access("hasRole('ROLE_USER') or hasRole('ROLE_MANAGER') or hasRole('ROLE_ADMIN')")
                 .anyRequest().permitAll()
                 .and()
                 .formLogin()

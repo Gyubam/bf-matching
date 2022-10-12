@@ -9,6 +9,9 @@ import website.bfmatching.entity.Team;
 import website.bfmatching.repository.MemberRepository;
 import website.bfmatching.repository.TeamRepository;
 
+import java.util.List;
+import java.util.Optional;
+
 @Service
 @RequiredArgsConstructor
 public class TeamService {
@@ -36,14 +39,45 @@ public class TeamService {
         Member findMember = memberRepository.findByLoginId(loginId);
 
         if (findTeam.getCurrentNum() < findTeam.getMaxNum()) {
-            findMember.changeTeam(findTeam);
-            findTeam.plusCurrentNum();
+
+            if (findMember.getTeam() != null) {
+
+                findMember.getTeam().minusCurrentNum();
+                findMember.changeTeam(findTeam);
+                findTeam.plusCurrentNum();
+
+            } else {
+
+                findMember.changeTeam(findTeam);
+                findTeam.plusCurrentNum();
+            }
+
             return findTeam.getId();
+
         } else {
             return null;
         }
 
+    }
 
+    @Transactional
+    public List<Team> findAll() {
 
+        List<Team> teamList = teamRepository.findAll();
+
+        return teamList;
+
+    }
+
+    @Transactional
+    public Team findById(Long id) {
+
+        Optional<Team> team = teamRepository.findById(id);
+
+        if (team.isPresent()) {
+            return team.get();
+        } else {
+            return null;
+        }
     }
 }
