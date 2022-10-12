@@ -5,9 +5,13 @@ import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
 import website.bfmatching.Dto.AddFormDto;
+import website.bfmatching.Dto.TeamDto;
+import website.bfmatching.entity.Board;
 import website.bfmatching.entity.Member;
 import website.bfmatching.file.UploadFile;
 import website.bfmatching.service.BoardService;
+import website.bfmatching.service.MemberService;
+import website.bfmatching.service.TeamService;
 
 import javax.annotation.PostConstruct;
 import javax.persistence.EntityManager;
@@ -31,6 +35,8 @@ public class InitDb {
 
         private final EntityManager em;
         private final BoardService boardService;
+        private final MemberService memberService;
+        private final TeamService teamService;
 
         public void dbInit1() {
             Member member1 = new Member("CoCo", "1234", "ROLE_USER");
@@ -47,6 +53,9 @@ public class InitDb {
             em.persist(member3);
             em.persist(member4);
             em.persist(member5);
+            em.persist(member6);
+            em.persist(member7);
+            em.persist(member8);
 
 
 
@@ -92,7 +101,23 @@ public class InitDb {
             boardService.save(member7.getLoginId(), addFormDto7, new UploadFile("1", "integrate_search_service.PNG"));
             boardService.save(member8.getLoginId(), addFormDto8, new UploadFile("1", "shoppingmall_project.PNG"));
 
+            TeamDto teamDto1 = new TeamDto("유튜브 댓글 분석 서비스", 4);
+            TeamDto teamDto2 = new TeamDto("SeeTrend", 4);
+            TeamDto teamDto3 = new TeamDto("개발자 대시보드 사이트", 2);
+            TeamDto teamDto4 = new TeamDto("사진 공유 플랫폼", 5);
+            TeamDto teamDto5 = new TeamDto("쇼핑몰 프로젝트", 4);
 
+            teamService.saveTeam(teamDto1, member1.getLoginId());
+            teamService.saveTeam(teamDto2, member2.getLoginId());
+            teamService.saveTeam(teamDto3, member3.getLoginId());
+            teamService.saveTeam(teamDto4, member4.getLoginId());
+
+            teamService.joinTeam(teamDto1, member2.getLoginId());
+            teamService.joinTeam(teamDto1, member3.getLoginId());
+            teamService.joinTeam(teamDto2, member4.getLoginId());
+            teamService.joinTeam(teamDto2, member5.getLoginId());
+            teamService.joinTeam(teamDto3, member6.getLoginId());
+            teamService.joinTeam(teamDto4, member7.getLoginId());
         }
     }
 
