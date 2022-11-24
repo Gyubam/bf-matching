@@ -18,9 +18,10 @@ services:
 
 
   application:
-    build:
-      context: ./
-      dockerfile: Dockerfile
+#    build:
+#      context: ./
+#      dockerfile: Dockerfile
+    image: sgb8170/bf-matching
     depends_on:
       - database
     ports:
